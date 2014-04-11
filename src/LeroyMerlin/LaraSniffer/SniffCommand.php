@@ -1,4 +1,4 @@
-<?php namespace LeroyMelin\LaraSniffer;
+<?php namespace LeroyMerlin\LaraSniffer;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -18,7 +18,7 @@ class SniffCommand extends Command {
      *
      * @var string
      */
-    protected $description = 'Command description.';
+    protected $description = 'Detect violations of coding standard.';
 
     /**
      * Array of possible shell colors
@@ -71,9 +71,6 @@ class SniffCommand extends Command {
     public function __construct()
     {
         parent::__construct();
-
-        $this->app = $this->getLaravel();
-        $this->config = $this->app->make('config');
     }
 
     /**
@@ -83,6 +80,9 @@ class SniffCommand extends Command {
      */
     public function fire()
     {
+        $this->app    = $this->getLaravel();
+        $this->config = $this->app->make('config');
+
         $output = $this->runSniffer();
 
         foreach (explode("\n", $output) as $line) {

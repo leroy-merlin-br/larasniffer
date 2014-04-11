@@ -1,6 +1,6 @@
 {
     "name": "leroy-merlin-br/larasniffer",
-    "description": "Detect violations of a defined coding standard. It helps your code remains clean and consistent.",
+    "description": "Larasniffer detect violations of a defined coding standard. It helps your code remains clean and consistent.",
     "license": "MIT",
     "authors": [
         {

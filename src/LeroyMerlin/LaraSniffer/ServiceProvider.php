@@ -1,4 +1,4 @@
-<?php namespace LeroyMelin\LaraSniffer;
+<?php namespace LeroyMerlin\LaraSniffer;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
