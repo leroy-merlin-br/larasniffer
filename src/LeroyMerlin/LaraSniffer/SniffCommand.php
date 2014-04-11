@@ -85,8 +85,12 @@ class SniffCommand extends Command {
 
         $output = $this->runSniffer();
 
-        foreach (explode("\n", $output) as $line) {
-            echo $this->formatLine($line)."\n";
+        if ($this->terminalHasColorSupport()) {
+            foreach (explode("\n", $output) as $line) {
+                echo $this->formatLine($line)."\n";
+            }
+        } else {
+            echo $output;
         }
 
         exit($this->exitCode);
@@ -159,6 +163,23 @@ class SniffCommand extends Command {
             "\033[" . $this->colors[$color] . "m".
             $string.
             "\033[0m";
+    }
+
+    /**
+     * Returns true if the stream supports colorization. Colorization is
+     * disabled if not supported by the stream:
+     *  -  Windows without Ansicon and ConEmu
+     *  -  non tty consoles
+     *
+     * @return boolean
+     */
+    protected function terminalHasColorSupport()
+    {
+        if (DIRECTORY_SEPARATOR == '\\') {
+            return false !== getenv('ANSICON') || 'ON' === getenv('ConEmuANSI');
+        }
+
+        return function_exists('posix_isatty') && @posix_isatty($this->stream);
     }
 
     /**
