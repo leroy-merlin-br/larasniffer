@@ -1,0 +1,24 @@
+{
+    "name": "leroy-merlin-br/larasniffer",
+    "description": "Larasniffer detect violations of a defined coding standard. It helps your code remains clean and consistent.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zizaco Ziuini",
+            "email": "zizaco@gmail.com",
+            "homepage": "http://www.zizaco.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "*",
+        "illuminate/console": "*",
+        "squizlabs/php_codesniffer": "1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "LeroyMerlin\\LaraSniffer\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
