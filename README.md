@@ -26,11 +26,11 @@ In your `config/app.php` add `'LeroyMerlin\LaraSniffer\ServiceProvider'` to the 
 
     ),
 
-Publish the AssetWatcher configuration file:
+Publish the configuration file:
 
     php artisan config:publish leroy-merlin-br/larasniffer
 
-Edit the configuration file `app/config/packages/leroy-merlin-br/larasniffer/config.php` adding the behavior you want.
+Edit the configuration file `app/config/packages/leroy-merlin-br/larasniffer/config.php` to tweak the sniffer behavior.
 
 ### Usage
 
