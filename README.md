@@ -15,14 +15,14 @@ Run the Composer update comand
 
     $ composer update
 
-In your `config/app.php` add `'LeroyMelin\LaraSniffer\ServiceProvider'` to the end of the `$providers` array
+In your `config/app.php` add `'LeroyMerlin\LaraSniffer\ServiceProvider'` to the end of the `$providers` array
 
     'providers' => array(
 
         'Illuminate\Foundation\Providers\ArtisanServiceProvider',
         'Illuminate\Auth\AuthServiceProvider',
         ...
-        'LeroyMelin\LaraSniffer\ServiceProvider',
+        'LeroyMerlin\LaraSniffer\ServiceProvider',
 
     ),
 
