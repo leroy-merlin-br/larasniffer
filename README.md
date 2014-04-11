@@ -1,5 +1,7 @@
 # LaraSniffer (Laravel Package)
-Detect violations of a defined coding standard. It helps your code remains clean and consistent.
+Detect violations of a defined coding standard. It helps your code remains clean and consistent. Available options are: **PSR2**, **PSR1**, **Zend**, **PEAR**, **Squiz**, **PHPCS** and **MySource**.
+
+![php artisan sniff](https://dl.dropboxusercontent.com/u/12506137/libs_bundles/php_artisan_sniff.png)
 
 ## Quick start
 
