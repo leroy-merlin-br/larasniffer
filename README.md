@@ -33,3 +33,11 @@ Edit the configuration file `app/config/packages/leroy-merlin-br/larasniffer/con
 ### Usage
 
     php artisan sniff
+
+## License
+
+LaraSniffer is free software distributed under the terms of the MIT license
+
+## Aditional information
+
+Any issues, please [report here](https://github.com/leroy-merlin-br/larasniffer/issues)
