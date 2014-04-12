@@ -102,9 +102,7 @@ class SniffCommand extends Command {
      */
     public function runSniffer()
     {
-        include app_path().'/../vendor/squizlabs/php_codesniffer/CodeSniffer/CLI.php';
-
-        $phpcs = $this->getLaravel()->make("PHP_CodeSniffer_CLI");
+        $phpcs = $this->getPHPSnifferInstance();
         $phpcs->checkRequirements();
 
         $standard = $this->config->get('larasniffer.standard', array('PSR2'));
@@ -163,6 +161,20 @@ class SniffCommand extends Command {
             "\033[" . $this->colors[$color] . "m".
             $string.
             "\033[0m";
+    }
+
+    /**
+     * Include the CodeSniffer file (since there is not a better way to load it)
+     * and then instantiate the object using the IoC container.
+     *
+     * @return \PHP_CodeSniffer_CLI A class to process command line phpcs scripts.
+     * @see https://github.com/squizlabs/PHP_CodeSniffer
+     */
+    protected function getPHPSnifferInstance()
+    {
+        include app_path().'/../vendor/squizlabs/php_codesniffer/CodeSniffer/CLI.php';
+
+        return $this->getLaravel()->make("PHP_CodeSniffer_CLI");
     }
 
     /**
