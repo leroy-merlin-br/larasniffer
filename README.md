@@ -3,7 +3,7 @@ Detect violations of a defined coding standard. It helps your code remains clean
 
 [![Latest Stable Version](https://poser.pugx.org/leroy-merlin-br/larasniffer/v/stable.png)](https://packagist.org/packages/leroy-merlin-br/larasniffer)
 [![Total Downloads](https://poser.pugx.org/leroy-merlin-br/larasniffer/downloads.png)](https://packagist.org/packages/leroy-merlin-br/larasniffer)
-[![License](https://poser.pugx.org/leroy-merlin-br/larasniffer/license.png)](https://packagist.org/packages/leroy-merlin-br/larasniffer)
+[![License](https://poser.pugx.org/leroy-merlin-br/larasniffer/license.png)](http://opensource.org/licenses/MIT)
 
 ![php artisan sniff](https://dl.dropboxusercontent.com/u/12506137/libs_bundles/php_artisan_sniff.png)
 
