@@ -2,6 +2,13 @@
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
+/**
+ * Service provider that registers SniffCommand into Laravel application
+ *
+ * @author    Zizaco Zizuini <zizaco@gmail.com>
+ * @license   http://opensource.org/licenses/MIT
+ * @link      https://github.com/leroy-merlin-br/larasniffer
+ */
 class ServiceProvider extends BaseServiceProvider {
 
     /**

@@ -4,6 +4,14 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
+/**
+ * SniffCommand is an artisan command (meant to be used with Laravel) that
+ * detects violations of a defined set of coding standards using PHP_CodeSniffer
+ *
+ * @author    Zizaco Zizuini <zizaco@gmail.com>
+ * @license   http://opensource.org/licenses/MIT
+ * @link      https://github.com/leroy-merlin-br/larasniffer
+ */
 class SniffCommand extends Command {
 
     /**
