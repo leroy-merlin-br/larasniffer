@@ -179,7 +179,7 @@ class SniffCommand extends Command {
             return false !== getenv('ANSICON') || 'ON' === getenv('ConEmuANSI');
         }
 
-        return function_exists('posix_isatty') && @posix_isatty($this->stream);
+        return function_exists('posix_isatty');
     }
 
     /**
