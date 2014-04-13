@@ -1,6 +1,7 @@
 # LaraSniffer (Laravel Package)
 Detect violations of a defined coding standard. It helps your code remains clean and consistent. Available options are: **PSR2**, **PSR1**, **Zend**, **PEAR**, **Squiz**, **PHPCS** and **MySource**.
 
+[![Build Status](https://api.travis-ci.org/leroy-merlin-br/larasniffer.png)](https://travis-ci.org/leroy-merlin-br/larasniffer)
 [![Latest Stable Version](https://poser.pugx.org/leroy-merlin-br/larasniffer/v/stable.png)](https://packagist.org/packages/leroy-merlin-br/larasniffer)
 [![Total Downloads](https://poser.pugx.org/leroy-merlin-br/larasniffer/downloads.png)](https://packagist.org/packages/leroy-merlin-br/larasniffer)
 [![License](https://poser.pugx.org/leroy-merlin-br/larasniffer/license.png)](http://opensource.org/licenses/MIT)
