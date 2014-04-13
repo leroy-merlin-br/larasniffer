@@ -35,22 +35,10 @@ class ServiceProvider extends BaseServiceProvider {
      */
     public function register()
     {
-        $this->app['command.larasniffer'] = $this->app->share(function($app)
-        {
+        $this->app->bind('command.larasniffer', function($app) {
             return new SniffCommand;
         });
 
         $this->commands('command.larasniffer');
     }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return array();
-    }
-
 }
