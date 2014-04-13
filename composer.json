@@ -1,6 +1,7 @@
 {
     "name": "leroy-merlin-br/larasniffer",
     "description": "Larasniffer detect violations of a defined coding standard. It helps your code remains clean and consistent.",
+    "keywords": ["laravel","sniff","psr2","psr1"],
     "license": "MIT",
     "authors": [
         {
@@ -14,6 +15,9 @@
         "illuminate/support": "*",
         "illuminate/console": "*",
         "squizlabs/php_codesniffer": "1.*"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*@dev"
     },
     "autoload": {
         "psr-0": {
