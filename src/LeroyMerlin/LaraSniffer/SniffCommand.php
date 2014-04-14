@@ -113,8 +113,8 @@ class SniffCommand extends Command {
         $phpcs = $this->getPHPSnifferInstance();
         $phpcs->checkRequirements();
 
-        $standard = $this->config->get('larasniffer.standard', array('PSR2'));
-        $files    = $this->config->get('larasniffer.files', array('app/models', 'app/controllers'));
+        $standard = $this->config->get('larasniffer::standard', array('PSR2'));
+        $files    = $this->config->get('larasniffer::files', array('app/models', 'app/controllers'));
 
         $options = array(
             'standard' => $standard,
