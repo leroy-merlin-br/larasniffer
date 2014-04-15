@@ -65,7 +65,7 @@ class ServiceProviderTest extends PHPUnit_Framework_TestCase
                 // Make sure that the commands are being registered
                 // with a closure that returns the correct
                 // object.
-                function($name, $closure) use ($test, $app) {
+                function ($name, $closure) use ($test, $app) {
 
                     $shouldBe = ['command.larasniffer' => 'LeroyMerlin\LaraSniffer\SniffCommand'];
 

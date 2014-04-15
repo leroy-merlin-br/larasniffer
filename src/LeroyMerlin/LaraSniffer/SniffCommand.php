@@ -12,7 +12,8 @@ use Symfony\Component\Console\Input\InputArgument;
  * @license   http://opensource.org/licenses/MIT
  * @link      https://github.com/leroy-merlin-br/larasniffer
  */
-class SniffCommand extends Command {
+class SniffCommand extends Command
+{
 
     /**
      * The console command name.

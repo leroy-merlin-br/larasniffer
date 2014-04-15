@@ -9,7 +9,8 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
  * @license   http://opensource.org/licenses/MIT
  * @link      https://github.com/leroy-merlin-br/larasniffer
  */
-class ServiceProvider extends BaseServiceProvider {
+class ServiceProvider extends BaseServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -35,7 +36,7 @@ class ServiceProvider extends BaseServiceProvider {
      */
     public function register()
     {
-        $this->app->bind('command.larasniffer', function($app) {
+        $this->app->bind('command.larasniffer', function ($app) {
             return new SniffCommand;
         });
 
