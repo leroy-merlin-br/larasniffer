@@ -164,7 +164,7 @@ class SniffCommand extends Command
      * @param  string $string Text
      * @return void
      */
-    private function colorize($color, $string)
+    protected function colorize($color, $string)
     {
         return
             "\033[" . $this->colors[$color] . "m".

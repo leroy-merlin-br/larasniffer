@@ -121,4 +121,38 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         */
         $this->assertEquals('Something', $command->runSniffer());
     }
+
+    public function testShouldColorize()
+    {
+        /*
+        |------------------------------------------------------------
+        | Set
+        |------------------------------------------------------------
+        */
+        $command = m::mock(
+            'LeroyMerlin\LaraSniffer\SniffCommand[colorize]'
+        );
+        $command->shouldAllowMockingProtectedMethods();
+        $command->colors = [
+            'red' => '0;31'
+        ];
+
+        /*
+        |------------------------------------------------------------
+        | Expectation
+        |------------------------------------------------------------
+        */
+        $command->shouldReceive('colorize')
+            ->passthru();
+
+        /*
+        |------------------------------------------------------------
+        | Assertion
+        |------------------------------------------------------------
+        */
+        $this->assertEquals(
+            "\033[0;31mFooBar\033[0m",
+            $command->colorize('red','FooBar')
+        );
+    }
 }
