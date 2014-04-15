@@ -33,7 +33,7 @@ class SniffCommand extends Command
      * Array of possible shell colors
      * @var array
      */
-    private $colors = array(
+    public $colors = array(
         'black'        => '0;30',
         'dark_gray'    => '1;30',
         'blue'         => '0;34',

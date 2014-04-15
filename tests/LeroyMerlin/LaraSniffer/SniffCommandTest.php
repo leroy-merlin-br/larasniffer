@@ -112,6 +112,7 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
             ->with($options)->once()
             ->andReturnUsing(function () {
                 echo 'Something';
+                return 1;
             });
 
         /*
@@ -120,6 +121,53 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         |------------------------------------------------------------
         */
         $this->assertEquals('Something', $command->runSniffer());
+    }
+
+    public function testShouldFormatLine()
+    {
+        /*
+        |------------------------------------------------------------
+        | Set
+        |------------------------------------------------------------
+        */
+        $command = m::mock(
+            'LeroyMerlin\LaraSniffer\SniffCommand[formatLine]'
+        );
+        $command->shouldAllowMockingProtectedMethods();
+
+        /*
+        |------------------------------------------------------------
+        | Expectation
+        |------------------------------------------------------------
+        */
+        $command->shouldReceive('formatLine')
+            ->passthru();
+
+        $assertionTable = [
+            '|' => 'dark_gray',
+            '----------------' => 'dark_gray',
+            'FILE: path/to/file' => 'light_green',
+            'ERROR(S)' => 'light_red',
+            'ERROR' => 'light_red',
+            'WARNING' => 'yellow',
+        ];
+
+        /*
+        |------------------------------------------------------------
+        | Assertion
+        |------------------------------------------------------------
+        */
+        foreach($assertionTable as $text => $colorName) {
+            $this->assertContains(
+                $command->colors[$colorName],
+                $command->formatLine($text)
+            );
+        }
+
+        $this->assertEquals(
+            'FooBar',
+            $command->formatLine('FooBar')
+        );
     }
 
     public function testShouldColorize()
