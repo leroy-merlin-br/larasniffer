@@ -1,0 +1,9 @@
+# .coveralls.yml example configuration
+
+# same as Ruby lib
+service_name: travis-ci # travis-ci or travis-pro
+
+# for php-coveralls
+src_dir: src/LeroyMerlin
+coverage_clover: build/logs/clover.xml
+json_path: build/logs/coveralls-upload.json

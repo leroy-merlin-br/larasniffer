@@ -7,4 +7,9 @@ before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev
 
-script: phpunit
+script:
+  - mkdir -p build/logs
+  - phpunit -c phpunit.xml.dist
+
+after_script:
+  - php vendor/bin/coveralls -v
