@@ -25,10 +25,11 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         $command = m::mock(
             'LeroyMerlin\LaraSniffer\SniffCommand['.
             'getLaravel,terminalHasColorSupport,'.
-            'formatLine,runSniffer]'
+            'formatLine,runSniffer,terminate]'
         );
 
         $app = m::mock('LaravelApp');
+        $command->shouldAllowMockingProtectedMethods();
         $config = m::mock('Config');
 
         $sniffResult = "Sniff\nResult\nFoo\nBar";
@@ -48,21 +49,76 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
             ->once()->andReturn($sniffResult);
 
         $command->shouldReceive('terminalHasColorSupport')
-            ->times(4)
-            ->return(true);
+            ->andReturn(true);
 
         $command->shouldReceive('formatLine')
-            ->returnUsing(function ($input) {
+            ->times(4)
+            ->andReturnUsing(function ($input) {
                 return $input;
             });
+
+        $this->expectOutputString($sniffResult."\n");
+
+        $command->shouldReceive('terminate')
+            ->once();
 
        /*
         |------------------------------------------------------------
         | Assertion
         |------------------------------------------------------------
         */
+        $command->fire();
         $this->assertEquals($app, $command->app);
         $this->assertEquals($config, $command->config);
 
+    }
+
+    public function testShouldRunSniffer()
+    {
+        /*
+        |------------------------------------------------------------
+        | Set
+        |------------------------------------------------------------
+        */
+        $command = m::mock(
+            'LeroyMerlin\LaraSniffer\SniffCommand[getPHPSnifferInstance]'
+        );
+        $command->shouldAllowMockingProtectedMethods();
+        $command->app    = m::mock('LaravelApp');
+        $command->config = m::mock('Config');
+        $phpcs = m::mock("PHP_CodeSniffer_CLI");
+        $options = ['standard'=>"PSRX", 'files'=>"path/to/files"];
+
+        /*
+        |------------------------------------------------------------
+        | Expectation
+        |------------------------------------------------------------
+        */
+        $command->shouldReceive('getPHPSnifferInstance')
+            ->once()->andReturn($phpcs);
+
+        $phpcs->shouldReceive('checkRequirements')
+            ->once();
+
+        $command->config->shouldReceive('get')
+            ->with('larasniffer::standard', m::any())
+            ->andReturn('PSRX');
+
+        $command->config->shouldReceive('get')
+            ->with('larasniffer::files', m::any())
+            ->andReturn('path/to/files');
+
+        $phpcs->shouldReceive('process')
+            ->with($options)->once()
+            ->andReturnUsing(function () {
+                echo 'Something';
+            });
+
+        /*
+        |------------------------------------------------------------
+        | Assertion
+        |------------------------------------------------------------
+        */
+        $this->assertEquals('Something', $command->runSniffer());
     }
 }

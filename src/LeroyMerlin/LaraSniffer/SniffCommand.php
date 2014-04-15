@@ -63,14 +63,14 @@ class SniffCommand extends Command
      *
      * @return \Illuminate\Foundation\Application
      */
-    protected $app = null;
+    public $app = null;
 
     /**
      * The Laravel Config component
      *
      * @return \Illuminate\Config\Repository
      */
-    protected $config = null;
+    public $config = null;
 
     /**
      * Create a new command instance.
@@ -102,7 +102,7 @@ class SniffCommand extends Command
             echo $output;
         }
 
-        exit($this->exitCode);
+        $this->terminate($this->exitCode);
     }
 
     /**
@@ -176,6 +176,7 @@ class SniffCommand extends Command
      * Include the CodeSniffer file (since there is not a better way to load it)
      * and then instantiate the object using the IoC container.
      *
+     * @codeCoverageIgnore
      * @return \PHP_CodeSniffer_CLI A class to process command line phpcs scripts.
      * @see https://github.com/squizlabs/PHP_CodeSniffer
      */
@@ -192,6 +193,7 @@ class SniffCommand extends Command
      *  -  Windows without Ansicon and ConEmu
      *  -  non tty consoles
      *
+     * @codeCoverageIgnore
      * @return boolean
      */
     protected function terminalHasColorSupport()
@@ -201,6 +203,18 @@ class SniffCommand extends Command
         }
 
         return function_exists('posix_isatty');
+    }
+
+    /**
+     * Exits the command
+     *
+     * @codeCoverageIgnore
+     * @param  mixed $code The exit code
+     * @return void
+     */
+    protected function terminate($code)
+    {
+        exit($code);
     }
 
     /**
