@@ -157,7 +157,7 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         | Assertion
         |------------------------------------------------------------
         */
-        foreach($assertionTable as $text => $colorName) {
+        foreach ($assertionTable as $text => $colorName) {
             $this->assertContains(
                 $command->colors[$colorName],
                 $command->formatLine($text)
@@ -200,7 +200,7 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         */
         $this->assertEquals(
             "\033[0;31mFooBar\033[0m",
-            $command->colorize('red','FooBar')
+            $command->colorize('red', 'FooBar')
         );
     }
 }
