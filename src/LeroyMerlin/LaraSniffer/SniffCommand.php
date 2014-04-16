@@ -116,10 +116,13 @@ class SniffCommand extends Command
 
         $standard = $this->config->get('larasniffer::standard', array('PSR2'));
         $files    = $this->config->get('larasniffer::files', array('app/models', 'app/controllers'));
+        $ignored   = $this->config->get('larasniffer::ignored', '');
 
         $options = array(
             'standard' => $standard,
-            'files'    => $files
+            'files'    => $files,
+            'ignored'   => $ignored,
+            'extensions' => array('php'),
         );
 
         ob_start();

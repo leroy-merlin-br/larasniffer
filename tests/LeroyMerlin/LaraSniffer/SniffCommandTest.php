@@ -87,7 +87,12 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         $command->app    = m::mock('LaravelApp');
         $command->config = m::mock('Config');
         $phpcs = m::mock("PHP_CodeSniffer_CLI");
-        $options = ['standard'=>"PSRX", 'files'=>"path/to/files"];
+        $options = [
+            'standard'=>"PSRX",
+            'files'=>"path/to/files",
+            'ignored'=>array('*blade.php'),
+            'extensions'=>array("php")
+        ];
 
         /*
         |------------------------------------------------------------
@@ -107,6 +112,10 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         $command->config->shouldReceive('get')
             ->with('larasniffer::files', m::any())
             ->andReturn('path/to/files');
+
+        $command->config->shouldReceive('get')
+            ->with('larasniffer::ignored', m::any())
+            ->andReturn(array('*blade.php'));
 
         $phpcs->shouldReceive('process')
             ->with($options)->once()

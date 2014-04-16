@@ -28,4 +28,19 @@ return array(
         'app/controllers',
         'app/commands',
     ),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Files to ignore
+    |--------------------------------------------------------------------------
+    |
+    | Sometimes you want LaraSniffer to run over a very large number of files,
+    | but you want some files and folders to be skipped. The ignored config key
+    | can be used to tell LaraSniffer to skip files and folders that match one
+    | or more patterns.
+    |
+    | Ex: 'ignored' => array('*blade.php', 'app/database', 'app/lang'),
+    |
+    */
+    'ignored' => array(),
 );
