@@ -7,6 +7,8 @@ Detect violations of a defined coding standard. It helps your code remains clean
 [![Total Downloads](https://poser.pugx.org/leroy-merlin-br/larasniffer/downloads.png)](https://packagist.org/packages/leroy-merlin-br/larasniffer)
 [![License](https://poser.pugx.org/leroy-merlin-br/larasniffer/license.png)](http://opensource.org/licenses/MIT)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/48c94828-ca0a-49df-817d-fa67ce31509e/small.png)](https://insight.sensiolabs.com/projects/48c94828-ca0a-49df-817d-fa67ce31509e)
+
 ![php artisan sniff](https://dl.dropboxusercontent.com/u/12506137/libs_bundles/php_artisan_sniff.png)
 
 ## Quick start
