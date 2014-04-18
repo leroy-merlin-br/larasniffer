@@ -92,13 +92,7 @@ class SniffCommand extends Command
 
         $output = $this->runSniffer();
 
-        if ($this->terminalHasColorSupport()) {
-            foreach (explode("\n", $output) as $line) {
-                echo $this->formatLine($line)."\n";
-            }
-        } else {
-            echo $output;
-        }
+        $this->printOutput($output);
 
         return $this->exitCode;
     }
@@ -133,6 +127,25 @@ class SniffCommand extends Command
         }
 
         return $output;
+    }
+
+    /**
+     * Prints the given content to the console. It will also
+     * check if the terminal has color support in order to
+     * add color to the output.
+     *
+     * @param  string $content
+     * @return void
+     */
+    public function printOutput($content)
+    {
+        if ($this->terminalHasColorSupport()) {
+            foreach (explode("\n", $content) as $line) {
+                echo $this->formatLine($line)."\n";
+            }
+        } else {
+            echo $content."\n";
+        }
     }
 
     /**

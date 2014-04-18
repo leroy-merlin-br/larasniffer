@@ -23,9 +23,8 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         |------------------------------------------------------------
         */
         $command = m::mock(
-            'LeroyMerlin\LaraSniffer\SniffCommand['.
-            'getLaravel,terminalHasColorSupport,'.
-            'formatLine,runSniffer,terminate]'
+            'LeroyMerlin\LaraSniffer\SniffCommand'.
+            '[getLaravel,runSniffer,printOutput]'
         );
 
         $app = m::mock('LaravelApp');
@@ -48,16 +47,8 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         $command->shouldReceive('runSniffer')
             ->once()->andReturn($sniffResult);
 
-        $command->shouldReceive('terminalHasColorSupport')
-            ->andReturn(true);
-
-        $command->shouldReceive('formatLine')
-            ->times(4)
-            ->andReturnUsing(function ($input) {
-                return $input;
-            });
-
-        $this->expectOutputString($sniffResult."\n");
+        $command->shouldReceive('printOutput')
+            ->once()->with($sniffResult);
 
        /*
         |------------------------------------------------------------
@@ -127,6 +118,86 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
         |------------------------------------------------------------
         */
         $this->assertEquals('Something', $command->runSniffer());
+    }
+
+    public function testShouldPrintColoredOutput()
+    {
+        /*
+        |------------------------------------------------------------
+        | Set
+        |------------------------------------------------------------
+        */
+        $command = m::mock(
+            'LeroyMerlin\LaraSniffer\SniffCommand'.
+            '[terminalHasColorSupport,formatLine]'
+        );
+
+        $command->shouldAllowMockingProtectedMethods();
+
+        $content = "Sniff\nResult\nFoo\nBar";
+
+        /*
+        |------------------------------------------------------------
+        | Expectation
+        |------------------------------------------------------------
+        */
+        $command->shouldReceive('terminalHasColorSupport')
+            ->once()->andReturn(true);
+
+        $command->shouldReceive('formatLine')
+            ->times(4)
+            ->andReturnUsing(function ($input) {
+                return $input;
+            });
+
+        $this->expectOutputString($content."\n");
+
+        /*
+        |------------------------------------------------------------
+        | Assertion
+        |------------------------------------------------------------
+        */
+        $command->printOutput($content);
+    }
+
+    public function testShouldPrintNonColoredOutput()
+    {
+        /*
+        |------------------------------------------------------------
+        | Set
+        |------------------------------------------------------------
+        */
+        $command = m::mock(
+            'LeroyMerlin\LaraSniffer\SniffCommand'.
+            '[terminalHasColorSupport,formatLine]'
+        );
+
+        $command->shouldAllowMockingProtectedMethods();
+
+        $content = "Sniff\nResult\nFoo\nBar";
+
+        /*
+        |------------------------------------------------------------
+        | Expectation
+        |------------------------------------------------------------
+        */
+        $command->shouldReceive('terminalHasColorSupport')
+            ->once()->andReturn(false);
+
+        $command->shouldReceive('formatLine')
+            ->never()
+            ->andReturnUsing(function ($input) {
+                return $input;
+            });
+
+        $this->expectOutputString($content."\n");
+
+        /*
+        |------------------------------------------------------------
+        | Assertion
+        |------------------------------------------------------------
+        */
+        $command->printOutput($content);
     }
 
     public function testShouldFormatLine()
