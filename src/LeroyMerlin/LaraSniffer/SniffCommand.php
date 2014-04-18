@@ -1,8 +1,6 @@
 <?php namespace LeroyMerlin\LaraSniffer;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * SniffCommand is an artisan command (meant to be used with Laravel) that
@@ -102,7 +100,7 @@ class SniffCommand extends Command
             echo $output;
         }
 
-        $this->terminate($this->exitCode);
+        return $this->exitCode;
     }
 
     /**
@@ -206,18 +204,6 @@ class SniffCommand extends Command
         }
 
         return function_exists('posix_isatty');
-    }
-
-    /**
-     * Exits the command
-     *
-     * @codeCoverageIgnore
-     * @param  mixed $code The exit code
-     * @return void
-     */
-    protected function terminate($code)
-    {
-        exit($code);
     }
 
     /**

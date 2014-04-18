@@ -59,15 +59,12 @@ class SniffCommandTest extends PHPUnit_Framework_TestCase
 
         $this->expectOutputString($sniffResult."\n");
 
-        $command->shouldReceive('terminate')
-            ->once();
-
        /*
         |------------------------------------------------------------
         | Assertion
         |------------------------------------------------------------
         */
-        $command->fire();
+        $this->assertEquals(0, $command->fire());
         $this->assertEquals($app, $command->app);
         $this->assertEquals($config, $command->config);
 
