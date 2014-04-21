@@ -43,6 +43,12 @@ Edit the configuration file `app/config/packages/leroy-merlin-br/larasniffer/con
 ### Usage
 
     php artisan sniff
+    
+## Contributting
+
+New contributions are always welcomed. Just open a pull request making sure that it contains tests and doc updates. Checked if the Travis-CI build is alright.
+
+[See all contributors](https://github.com/leroy-merlin-br/larasniffer/graphs/contributors)
 
 ## License
 
